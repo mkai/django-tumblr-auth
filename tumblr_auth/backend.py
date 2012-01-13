@@ -26,11 +26,9 @@ class TumblrBackend(OAuthBackend):
         return details[USERNAME]
 
     def get_user_details(self, response):
-        response = response['response']['user']['blogs'][0]
-
-        name = response['name']
+        user_info = response['response']['user']
         data = {
-            USERNAME: name,
+            USERNAME: user_info['name'],
             'email': '',
             'fullname': '',
             'first_name': '',
